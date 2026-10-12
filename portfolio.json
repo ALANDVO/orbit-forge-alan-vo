@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "name": "orbit-forge-alan-vo",
+  "owner": "ALANDVO",
+  "email": "alanvo@gmail.com",
+  "domain": "AI/ML developer tools",
+  "summary": "Work in progress: orbit-forge-alan-vo",
+  "workflows": [
+    "Intent Graph Synthesis: deterministic translation of creative intent parameters into prompt hierarchies and sampling recipes",
+    "ComfyUI / Local Engine Compilation: DAG generation, VRAM calculation, and executable local generation graph generation",
+    "PBR Texture Synthesizer: procedural computation of albedo, roughness, metallic, and normal maps with MaterialX specifications"
+  ],
+  "auth": "oidc-keycloak-saml-broker",
+  "llm_providers": [
+    "openai-compatible",
+    "anthropic",
+    "gemini",
+    "ollama"
+  ],
+  "status": "work-in-progress"
+}
