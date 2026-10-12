@@ -1,0 +1,82 @@
+{
+  "id": "orbit-forge",
+  "realm": "orbit-forge",
+  "displayName": "Orbit Forge Studio",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "roles": {
+    "realm": [
+      {
+        "name": "viewer",
+        "description": "Read-only access to generation recipes and material specifications"
+      },
+      {
+        "name": "operator",
+        "description": "Creation and compilation of intents, pipelines, and PBR textures"
+      },
+      {
+        "name": "admin",
+        "description": "Administrative authority, audit log inspection, and system configuration"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "orbit-forge-app",
+      "name": "Orbit Forge Frontend Client",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "http://127.0.0.1:3000/*",
+        "http://localhost:3000/*",
+        "http://127.0.0.1:5173/*",
+        "http://localhost:5173/*"
+      ],
+      "webOrigins": [
+        "http://127.0.0.1:3000",
+        "http://localhost:3000",
+        "http://127.0.0.1:5173",
+        "http://localhost:5173"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://127.0.0.1:3000/*##http://localhost:3000/*"
+      },
+      "defaultClientScopes": [
+        "web-origins",
+        "roles",
+        "profile",
+        "email"
+      ]
+    }
+  ],
+  "identityProviders": [
+    {
+      "alias": "saml-enterprise-idp",
+      "displayName": "Corporate SAML Identity Provider",
+      "providerId": "saml",
+      "enabled": false,
+      "trustEmail": true,
+      "storeToken": false,
+      "addReadTokenRoleOnCreate": false,
+      "authenticateByDefault": false,
+      "firstBrokerLoginFlowAlias": "first broker login",
+      "config": {
+        "entityId": "http://127.0.0.1:8080/realms/orbit-forge",
+        "singleSignOnServiceUrl": "https://saml-idp.example.com/sso",
+        "nameIDPolicyFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+        "principalType": "SUBJECT",
+        "allowCreate": "true"
+      }
+    }
+  ]
+}
