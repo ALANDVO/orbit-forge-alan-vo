@@ -1,0 +1,372 @@
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 1rem;
+  color: var(--text-dim);
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 0.875rem;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--error);
+  border-radius: var(--radius);
+  color: var(--error);
+  font-size: 0.875rem;
+}
+
+.error-icon {
+  font-size: 1.25rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: var(--border);
+}
+
+.empty-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.empty-description {
+  font-size: 0.875rem;
+  max-width: 400px;
+}
+
+/* Intent dashboard */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.dashboard-meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.dashboard-filters {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.filter-select {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.875rem;
+  transition: var(--transition);
+}
+
+.filter-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.intent-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.intent-card:hover {
+  border-color: var(--accent);
+}
+
+.intent-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.intent-card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.intent-card-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.intent-card-archetype {
+  background: var(--bg-hover);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.intent-card-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.intent-btn {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.intent-btn:hover {
+  background: var(--bg-hover);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-dim);
+}
+
+/* Intent form */
+.intent-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.875rem;
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Intent detail */
+.intent-detail {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.intent-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.intent-detail-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.intent-detail-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 0.5rem;
+}
+
+.intent-detail-meta span {
+  background: var(--bg-hover);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.param-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.param-label {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+}
+
+.param-value {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.prompt-section {
+  margin-bottom: 1rem;
+}
+
+.prompt-label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+
+.prompt-text {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+}
+
+.layer-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.4rem;
+  background: var(--bg);
+}
+
+.layer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.layer-label {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.layer-priority {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  background: var(--bg-hover);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.layer-tokens {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.layer-token {
+  background: var(--bg-hover);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+
+.back-link {
+  color: var(--accent);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}

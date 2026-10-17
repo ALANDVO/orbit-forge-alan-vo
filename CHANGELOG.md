@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.0.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
@@ -26,4 +30,18 @@ Authored by Alan Vo <alanvo@gmail.com>.
 - Keycloak realm configuration with PKCE authorization-code flow and enterprise SAML identity brokering architecture.
 - React 18 + TypeScript + Vite frontend with responsive dark UI, Intent Dashboard, PBR Studio, Pipeline Compiler, and Evaluation panel.
 - Docker containerization for backend and frontend with unprivileged non-root execution.
-- Comprehensive automated test suite with pytest backend tests and Vitest frontend integration tests.
+
+### Fixed
+- `quality` field now persisted in `intents` table schema (was missing column; compile endpoint hardcoded `quality="standard"` ignoring the stored value).
+- Frontend IntentDashboard test isolation: added `afterEach(cleanup)` and explicit DOM teardown; RTL auto-cleanup was disabled because vitest config lacked `globals: true`.
+- Frontend `tsconfig.json` `lib` updated to `ES2024` to resolve `Promise.withResolvers` type error.
+- Frontend test setup replaced manual `expect.extend(matchers)` with `import "@testing-library/jest-dom/vitest"` for proper type augmentation of jest-dom matchers.
+- `App.test.tsx` wrapped all renders in `await act(async () => …)` and added `listIntents` mock to flush async `useEffect` calls.
+- `IntentDashboard.test.tsx` `renderAndFlush` fixed: `await resolve` (function) replaced with `await promise` (the actual promise from `Promise.withResolvers`).
+
+### Changed
+- `IntentSchema` now includes `quality: str` field, serialized in all intent API responses (GET, POST, list).
+
+### Tests
+- Added `test_create_intent_preserves_quality`: verifies `quality` is stored and returned in create + GET responses.
+- Added `test_compile_uses_stored_quality`: verifies compile produces higher steps and cfg_scale for `"hd"` quality vs `"standard"`.

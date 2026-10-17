@@ -8,19 +8,21 @@ intent-crafting-engine
 
 ## Roadmap
 
-### intent-crafting-engine — Intent-driven multi-modal prompt graph synthesis and local pipeline generator
+### intent-crafting-engine — Deterministic Intent Graph Compiler with SQLite persistence and React studio
 
-Status: done
+Status: in_progress
 
 Acceptance:
-- Deterministic intent compilation translating high-level aesthetic goals into multi-stage generation recipes
-- Local ComfyUI/Diffusers compatible execution graph builder and PBR texture map parameter synthesis
-- REST API endpoints with SQLite persistence, pagination, filtering, audit logging, and role-based authorization
-- Interactive React studio UI with workflow orchestration, PBR studio, pipeline compiler, and reproducible evaluation panel
+- Deterministic intent compilation translating high-level aesthetic goals (style archetype, subject, mood, lighting, composition) into structured positive/negative prompt hierarchies, CFG scale, sampler schedule, and deterministic seed
+- SQLite persistence with parameterized queries, pagination, filtering, UTC timestamps, and audit log
+- JWT bearer-only auth with localhost-only demo mode and production lockout, viewer/operator/admin role-based authorization on all data endpoints
+- REST API endpoints: health, demo-login, intent CRUD, intent compile, audit query
+- React + TypeScript studio UI with create intent form, intent dashboard, compiled intent detail view, loading/error/empty states
+- Backend pytest suite covering intent engine determinism and boundary/malformed inputs, API create/read workflows, auth rejection/role denial; frontend Vitest tests covering user-visible dashboard behavior
 
-Implementation: `backend/app/main.py`, `backend/app/core/config.py`, `backend/app/core/database.py`, `backend/app/core/auth.py`, `backend/app/core/audit.py`, `backend/app/models/schemas.py`, `backend/app/models/domain.py`, `backend/app/services/intent_engine.py`, `backend/app/services/pbr_synthesizer.py`, `backend/app/services/comfy_adapter.py`, `backend/app/services/llm_advisor.py`, `backend/app/services/evaluator.py`, `backend/app/api/auth.py`, `backend/app/api/intents.py`, `backend/app/api/materials.py`, `backend/app/api/pipelines.py`, `backend/app/api/audit.py`, `backend/app/api/evaluation.py`, `frontend/src/App.tsx`, `frontend/src/components/Navbar.tsx`, `frontend/src/components/IntentDashboard.tsx`, `frontend/src/components/PBRMaterialStudio.tsx`, `frontend/src/components/PipelineCompilerView.tsx`, `frontend/src/components/EvaluationPanel.tsx`, `frontend/src/components/AuditLogView.tsx`, `frontend/src/services/api.ts`, `frontend/src/services/auth.ts`
+Implementation: `backend/app/main.py`, `backend/app/core/config.py`, `backend/app/core/database.py`, `backend/app/core/auth.py`, `backend/app/core/audit.py`, `backend/app/models/__init__.py`, `backend/app/models/domain.py`, `backend/app/models/schemas.py`, `backend/app/services/__init__.py`, `backend/app/services/intent_engine.py`, `backend/app/services/benchmark.py`, `backend/app/api/__init__.py`, `backend/app/api/auth.py`, `backend/app/api/intents.py`
 
-Tests: `backend/tests/test_intent_engine.py`, `backend/tests/test_pbr_synthesizer.py`, `backend/tests/test_comfy_adapter.py`, `backend/tests/test_api_workflows.py`, `backend/tests/test_auth_and_system.py`, `backend/tests/test_llm_advisor.py`, `backend/tests/test_evaluator.py`, `frontend/src/__tests__/App.test.tsx`, `frontend/src/__tests__/PBRMaterialStudio.test.tsx`, `frontend/src/__tests__/PipelineCompilerView.test.tsx`
+Tests: `backend/tests/conftest.py`, `backend/tests/test_intent_engine.py`, `backend/tests/test_api_workflows.py`, `backend/tests/test_auth_and_system.py`, `frontend/src/__tests__/App.test.tsx`, `frontend/src/__tests__/IntentDashboard.test.tsx`
 
 ### linux-hardware-daemon — Cross-platform hardware detection and AppImage runner daemon
 
