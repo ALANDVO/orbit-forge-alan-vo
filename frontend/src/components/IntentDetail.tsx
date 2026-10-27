@@ -19,12 +19,38 @@ export default function IntentDetail({
   const [compiled, setCompiled] = useState<CompiledIntentSchema | null>(null);
   const [compiling, setCompiling] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState<"positive" | "negative" | null>(null);
 
   // Reset compiled state when the selected intent changes.
   useEffect(() => {
     setCompiled(null);
     setError(null);
   }, [intent.id]);
+
+  const handleCompile = async () => {
+    setCompiling(true);
+    setError(null);
+    try {
+      const result = await compileIntent(intent.id);
+      setCompiled(result);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setCompiling(false);
+    }
+  };
+
+  const handleCopy = async (type: "positive" | "negative") => {
+    if (!compiled) return;
+    const text = type === "positive" ? compiled.positive_prompt : compiled.negative_prompt;
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(type);
+      setTimeout(() => setCopied(null), 2000);
+    } catch {
+      // Clipboard API may fail in some contexts; ignore silently
+    }
+  };
 
   const handleCompile = async () => {
     setCompiling(true);
@@ -79,12 +105,30 @@ export default function IntentDetail({
           </div>
 
           <div className="prompt-section">
-            <div className="prompt-label">Positive Prompt</div>
+            <div className="prompt-header">
+              <div className="prompt-label">Positive Prompt</div>
+              <button
+                className="copy-btn"
+                onClick={() => handleCopy("positive")}
+                disabled={copied === "positive"}
+              >
+                {copied === "positive" ? "✓ Copied" : "Copy"}
+              </button>
+            </div>
             <pre className="prompt-text">{compiled.positive_prompt}</pre>
           </div>
 
           <div className="prompt-section">
-            <div className="prompt-label">Negative Prompt</div>
+            <div className="prompt-header">
+              <div className="prompt-label">Negative Prompt</div>
+              <button
+                className="copy-btn"
+                onClick={() => handleCopy("negative")}
+                disabled={copied === "negative"}
+              >
+                {copied === "negative" ? "✓ Copied" : "Copy"}
+              </button>
+            </div>
             <pre className="prompt-text">{compiled.negative_prompt}</pre>
           </div>
 

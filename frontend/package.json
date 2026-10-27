@@ -1,1 +1,32 @@
-{"name":"orbit-forge-alan-vo","version":"1.0.0","description":"Deterministic Intent Graph Compiler for generative workflows","author":"Alan Vo <alanvo@gmail.com>","license":"MIT","scripts":{"dev":"vite","build":"tsc --noEmit && vite build","test":"vitest run"},"dependencies":{"react":"^18.3.1","react-dom":"^18.3.1"},"devDependencies":{"@testing-library/jest-dom":"^7.0.1","@testing-library/react":"^16.3.0","@testing-library/user-event":"^14.6.2","@types/react":"^18.3.11","@types/react-dom":"^18.3.0","@vitejs/plugin-react":"^5.1.2","happy-dom":"^15.11.7","typescript":"^5.6.3","vite":"^6.0.0","vitest":"^3.0.0"}}
+{
+  "name": "orbit-forge-alan-vo",
+  "version": "1.0.0",
+  "description": "Deterministic Intent Graph Compiler for generative workflows",
+  "author": {
+    "name": "Alan Vo",
+    "email": "alanvo@gmail.com",
+    "url": "https://github.com/ALANDVO"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.2",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "happy-dom": "^15.11.7",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}
