@@ -1,9 +1,20 @@
 # Changelog
 
-## 1.2.0 — work-in-progress checkpoint
+## 1.3.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
 
+## 1.2.0 — work-in-progress checkpoint
+
+### Fixed
+- Duplicate `handleCompile` function declaration in `frontend/src/components/IntentDetail.tsx` (lines 30-41 and 55-66 were identical; removed second declaration)
+- Pydantic protected namespace warning for `model_recommendation` field in `CompiledIntentSchema` by adding `protected_namespaces=()` to model_config
+
+### Tests
+- Backend: 80 tests pass (1 deprecation warning in test client, not our code)
+- Frontend: 9 tests pass
+
+Partial code published for continued development. Known issues: STATUS.md.
 ## 1.1.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.

@@ -173,7 +173,7 @@ class IntentSchema(BaseModel):
 class CompiledIntentSchema(BaseModel):
     """Compiled intent result returned by the API."""
 
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, protected_namespaces=())
 
     id: str
     intent_id: str

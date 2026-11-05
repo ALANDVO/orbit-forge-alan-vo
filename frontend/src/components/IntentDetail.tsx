@@ -52,18 +52,6 @@ export default function IntentDetail({
     }
   };
 
-  const handleCompile = async () => {
-    setCompiling(true);
-    setError(null);
-    try {
-      const result = await compileIntent(intent.id);
-      setCompiled(result);
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : String(err));
-    } finally {
-      setCompiling(false);
-    }
-  };
 
   return (
     <div>
