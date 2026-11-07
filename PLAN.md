@@ -51,3 +51,6 @@ Acceptance:
 - SAML identity provider federation via Keycloak realm identity brokering
 - Granular viewer/operator/admin role assignments mapped to enterprise directory groups
 
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)

@@ -60,3 +60,7 @@ Authored by Alan Vo <alanvo@gmail.com>.
 ### Tests
 - Added `test_create_intent_preserves_quality`: verifies `quality` is stored and returned in create + GET responses.
 - Added `test_compile_uses_stored_quality`: verifies compile produces higher steps and cfg_scale for `"hd"` quality vs `"standard"`.
+
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)

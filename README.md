@@ -191,3 +191,7 @@ All ports bind strictly to `127.0.0.1`:
 
 ---
 Authored by Alan Vo <alanvo@gmail.com>
+
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)
