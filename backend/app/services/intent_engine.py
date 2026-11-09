@@ -250,15 +250,19 @@ class IntentEngine:
     """
 
     def __init__(self) -> None:
-        # Validate that every archetype has an energy-conservation check.
-        self._pbr_archetypes = {
-            name: data for name, data in ARCHETYPES.items()
-            if "metallic" in data and "roughness" in data
-        }
-        for name, data in self._pbr_archetypes.items():
-            if not _energy_check(data.get("metallic"), data.get("roughness")):
-                # Adjust roughness upward to satisfy conservation.
-                data["roughness"] = max(data["roughness"], 0.5)
+        # Validate that every PBR archetype satisfies energy conservation.
+        # Use instance copies to avoid mutating global ARCHETYPES.
+        self._pbr_archetypes: dict[str, dict[str, Any]] = {}
+        for name, data in ARCHETYPES.items():
+            if "metallic" in data and "roughness" in data:
+                # Copy to avoid mutating global ARCHETYPES dict
+                archetype_copy = dict(data)
+                metallic = archetype_copy.get("metallic")
+                roughness = archetype_copy.get("roughness")
+                if not _energy_check(metallic, roughness):
+                    # Adjust roughness upward to satisfy conservation.
+                    archetype_copy["roughness"] = max(roughness, 0.5)
+                self._pbr_archetypes[name] = archetype_copy
 
     def compile(self, definition: IntentDefinition) -> CompiledIntent:
         """Compile an ``IntentDefinition`` into a fully specified recipe.
@@ -266,7 +270,7 @@ class IntentEngine:
         The compilation is a pure function — identical inputs always produce
         identical outputs.
         """
-        arch = ARCHETYPES[definition.style_archetype]
+        arch = self._pbr_archetypes.get(definition.style_archetype, ARCHETYPES[definition.style_archetype])
         mood = MOODS[definition.mood]
         lighting = LIGHTING[definition.lighting]
         comp = COMPOSITIONS[definition.composition]
@@ -432,3 +436,7 @@ def list_lighting() -> list[str]:
 
 def list_compositions() -> list[str]:
     return sorted(COMPOSITIONS.keys())
+
+
+def list_qualities() -> list[str]:
+    return sorted(QUALITY_MODIFIERS.keys())

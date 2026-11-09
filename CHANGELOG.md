@@ -1,8 +1,26 @@
 # Changelog
 
-## 1.3.0 — work-in-progress checkpoint
+## 1.4.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+## 1.3.0 — 2026-11-09
+
+### Fixed
+- `IntentEngine` no longer mutates global `ARCHETYPES` dictionary when adjusting PBR archetype roughness for energy conservation; each engine instance now maintains its own copy of PBR archetype data.
+
+### Added
+- `list_qualities()` function in `app.services.intent_engine` exposing available quality presets (standard, hd, uhd).
+- `qualities` field in `/api/v1/evaluation/archetypes` response so frontend can dynamically fetch quality options.
+- Frontend `IntentForm` now uses fetched `qualities` from API instead of hardcoded values.
+
+### Tests
+- Backend: 80 tests pass (1 deprecation warning in test client, not our code)
+- Frontend: 9 tests pass
+
+Partial code published for continued development. Known issues: STATUS.md.
+
+
 
 ## 1.2.0 — work-in-progress checkpoint
 

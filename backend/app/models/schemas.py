@@ -229,6 +229,6 @@ class HealthResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     status: str = "ok"
-    version: str = "1.0.0"
+    version: str = "1.3.0"
     environment: str = "development"
     demo_mode: bool = False

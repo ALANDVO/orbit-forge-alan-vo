@@ -92,6 +92,7 @@ export interface ArchetypeOptions {
   moods: string[];
   lighting: string[];
   compositions: string[];
+  qualities: string[];
 }
 
 export interface EvaluationMetrics {
