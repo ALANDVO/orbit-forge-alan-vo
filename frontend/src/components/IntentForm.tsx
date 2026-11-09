@@ -39,7 +39,7 @@ export default function IntentForm({
   const [mood, setMood] = useState(opts.moods[0]);
   const [lighting, setLighting] = useState(opts.lighting[0]);
   const [composition, setComposition] = useState(opts.compositions[0]);
-  const [quality, setQuality] = useState<"standard" | "hd" | "uhd">("standard");
+  const [quality, setQuality] = useState(opts.qualities[0] || "standard");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -145,11 +145,13 @@ export default function IntentForm({
           <select
             className="form-input"
             value={quality}
-            onChange={(e) => setQuality(e.target.value as typeof quality)}
+            onChange={(e) => setQuality(e.target.value)}
           >
-            <option value="standard">Standard (1024px)</option>
-            <option value="hd">HD (1536px)</option>
-            <option value="uhd">UHD (2048px)</option>
+            {opts.qualities.map((q) => (
+              <option key={q} value={q}>
+                {q.charAt(0).toUpperCase() + q.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
       </div>

@@ -73,6 +73,7 @@ describe("IntentDashboard", () => {
       moods: ["dramatic"],
       lighting: ["three-point-studio"],
       compositions: ["close-up"],
+      qualities: ["standard", "hd", "uhd"],
     });
   });
 

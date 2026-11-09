@@ -191,7 +191,7 @@ class TestHealthAndSystem:
         resp = client.get("/api/v1/health")
         assert resp.status_code == 200
         data = resp.json()
-        assert data["version"] == "1.0.0"
+        assert data["version"] == "1.3.0"
         assert data["status"] == "ok"
 
     def test_root_endpoint(self, client):
@@ -202,4 +202,4 @@ class TestHealthAndSystem:
     def test_version_endpoint(self, client):
         resp = client.get("/version")
         assert resp.status_code == 200
-        assert resp.json()["version"] == "1.0.0"
+        assert resp.json()["version"] == "1.3.0"

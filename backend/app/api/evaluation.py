@@ -13,7 +13,7 @@ from fastapi import APIRouter, Depends
 
 from app.core.auth import User, require_role
 from app.services.benchmark import run_evaluation
-from app.services.intent_engine import IntentEngine, list_archetypes, list_moods, list_lighting, list_compositions
+from app.services.intent_engine import IntentEngine, list_archetypes, list_moods, list_lighting, list_compositions, list_qualities
 from app.models.domain import IntentDefinition
 from app.services.benchmark import BENCHMARK_INTENTS, list_benchmark_intents
 
@@ -50,4 +50,5 @@ def get_archetypes() -> dict[str, list[str]]:
         "moods": list_moods(),
         "lighting": list_lighting(),
         "compositions": list_compositions(),
+        "qualities": list_qualities(),
     }

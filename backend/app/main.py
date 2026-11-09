@@ -25,7 +25,7 @@ from app.api.intents import router as intents_router
 from app.core.config import Settings, get_settings
 from app.core.database import init_db
 
-VERSION = "1.0.0"
+VERSION = "1.3.0"
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
