@@ -270,6 +270,22 @@ class IntentEngine:
         The compilation is a pure function — identical inputs always produce
         identical outputs.
         """
+        # ---- Validate input ----
+        errors: list[str] = []
+        if definition.style_archetype not in ARCHETYPES:
+            errors.append(f"Unknown archetype: {definition.style_archetype}")
+        if definition.mood not in MOODS:
+            errors.append(f"Unknown mood: {definition.mood}")
+        if definition.lighting not in LIGHTING:
+            errors.append(f"Unknown lighting: {definition.lighting}")
+        if definition.composition not in COMPOSITIONS:
+            errors.append(f"Unknown composition: {definition.composition}")
+        if definition.quality not in QUALITY_MODIFIERS:
+            errors.append(f"Unknown quality: {definition.quality}")
+        if errors:
+            raise ValueError("\n".join(errors))
+        
+
         arch = self._pbr_archetypes.get(definition.style_archetype, ARCHETYPES[definition.style_archetype])
         mood = MOODS[definition.mood]
         lighting = LIGHTING[definition.lighting]
