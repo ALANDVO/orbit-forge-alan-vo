@@ -1,6 +1,19 @@
 # Changelog
 
+## 1.6.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.5.0 — work-in-progress checkpoint
+## 1.5.1 — work-in-progress checkpoint
+
+### Added
+- `list_schedulers()` function in `app.services.intent_engine` exposing available scheduler mappings per archetype.
+- Targeted tests in `backend/tests/test_intent_engine.py` for scheduler listing coverage.
+
+### Tests
+- Backend: 83 tests pass (3 new scheduler listing tests added).
+
 
 Partial code published for continued development. Known issues: STATUS.md.
 

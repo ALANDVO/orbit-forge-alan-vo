@@ -456,3 +456,11 @@ def list_compositions() -> list[str]:
 
 def list_qualities() -> list[str]:
     return sorted(QUALITY_MODIFIERS.keys())
+
+def list_schedulers() -> dict[str, str]:
+    """Return a mapping of style archetype to recommended scheduler string.
+
+    This is useful for UI dropdowns and API consumers who need to know
+    which schedulers are available per archetype without compiling an intent.
+    """
+    return dict(SCHEDULER_FOR_ARCHETYPE)
