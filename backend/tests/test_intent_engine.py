@@ -12,6 +12,7 @@ import pytest
 from app.models.domain import IntentDefinition
 from app.services.intent_engine import (
     ARCHETYPES,
+    list_schedulers,
     MOODS,
     LIGHTING,
     COMPOSITIONS,
@@ -224,3 +225,25 @@ class TestValidation:
         )
         errors = engine.validate(intent)
         assert any("unknown-mood" in e for e in errors)
+
+class TestSchedulerListings:
+    """Tests for scheduler listing and archetype mappings."""
+
+    def test_list_schedulers_returns_all_archetypes(self, engine):
+        from app.services.intent_engine import list_schedulers
+        schedulers = list_schedulers()
+        assert len(schedulers) == len(ARCHETYPES)
+
+    def test_list_schedulers_contains_expected_keys(self, engine):
+        from app.services.intent_engine import list_schedulers
+        schedulers = list_schedulers()
+        for archetype in ARCHETYPES:
+            assert archetype in schedulers, f'Missing scheduler for {archetype}'
+
+    def test_scheduler_values_are_valid_strings(self, engine):
+        from app.services.intent_engine import list_schedulers
+        schedulers = list_schedulers()
+        for archetype, scheduler in schedulers.items():
+            assert isinstance(scheduler, str)
+            assert len(scheduler) > 0
+
