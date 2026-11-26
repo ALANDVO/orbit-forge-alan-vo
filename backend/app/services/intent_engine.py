@@ -464,3 +464,16 @@ def list_schedulers() -> dict[str, str]:
     which schedulers are available per archetype without compiling an intent.
     """
     return dict(SCHEDULER_FOR_ARCHETYPE)
+
+def count_prompt_tokens(positive_prompt: str) -> int:
+    """Count the number of unique tokens in a de-duplicated positive prompt string.
+
+    The prompt string is comma-separated with de-duplication preserving order.
+    Returns 0 for empty/whitespace-only strings.
+    """
+    if not positive_prompt or not positive_prompt.strip():
+        return 0
+    tokens = positive_prompt.split(", ")
+    return len(dict.fromkeys(tokens))
+
+
